@@ -32,9 +32,13 @@ python .\executable.py
 
 If "Custom URL" prompt appears insert url that you want to open after each time run has been compiled will open, empty means default => ( axbecher.com )
 
+![Custom URL](https://i.imgur.com/wtFj89x.png)
+
 You should have in taskbar the running script.
 
 Press **1. START** and find location for steam.exe
+
+![Main Menu](https://i.imgur.com/D4ELMl2.png)
 
 After that, Steam should run automatically and should launch the game.
 
