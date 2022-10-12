@@ -1,1 +1,3 @@
-python D:\Personal\Coding\Python\Automation\DontStarveTogether\runner.py
+D:
+cd D:\Personal\Coding\Python\Automation\DontStarveTogether\
+python runner.py
