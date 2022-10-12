@@ -69,7 +69,7 @@ In folder "development" you can find scripts that I used to debug this project.
 
 | Status | Name | Description |
 | ------- |  --- | --- |
-| TODO | Preview GIF | Preview gifs for this project |
+| ~~DONE~~ | ~~Preview GIF~~ | ~~Preview gifs for this project~~ |
 | TODO | .exe | Create .exe instead of .py |
 | TODO | Change click times | Change times for mouse clicks from GUI |
 | TODO | inStartup docs | Docs related to inStartup feature |
