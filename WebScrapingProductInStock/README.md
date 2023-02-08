@@ -29,7 +29,7 @@ For a visual guide on how to use the script, please refer to:
 ![Save url and use email - Axbecher](https://i.imgur.com/yhRaJH8.gif)
 
 ## Support
-For any questions or support, please contact us via https://axbecher.com/contact/
+For any questions or support, please contact me via https://axbecher.com/contact/
 
 ## License
 This project is licensed under the MIT License.
