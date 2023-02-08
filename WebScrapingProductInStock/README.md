@@ -26,7 +26,7 @@ The script will generate a HTML table with 4 columns: Availability, Product Name
 
 ## Tutorial
 For a visual guide on how to use the script, please refer to:
-![Save url and use email - Axbecher]([https://i.imgur.com/yhRaJH8.gif](https://github.com/axbecher/Automation-scripts/blob/main/WebScrapingProductInStock/WebScrapingProductInStock.mp4))
+WebScrapingProductInStock.mp4
 
 ## Support
 For any questions or support, please contact me via https://axbecher.com/contact/
