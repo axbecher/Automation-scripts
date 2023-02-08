@@ -27,7 +27,7 @@ The script will generate a HTML table with 4 columns: Availability, Product Name
 ## Tutorial
 For a visual guide on how to use the script, please refer to:
 
-https://github.com/axbecher/Automation-scripts/blob/main/WebScrapingProductInStock/WSPSComp.mp4
+https://user-images.githubusercontent.com/72851811/217576356-43f34fe5-7cbb-46e6-9d12-5517ae2b370a.mp4
 
 
 
