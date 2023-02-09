@@ -1,8 +1,8 @@
 # User email:
-email_user = 'outlookEmail'
+email_user = 'dumbdata'
 # User password:
-email_password = 'passwordEmail'
+email_password = 'dumbdata'
 # Server for Office, details -> https://domar.com/pages/smtp_pop3_server
-server = 'smtp.office365.com'
+server = 'smtp-mail.outlook.com'
 # Who will receive this email / output / html / table ?
-to = 'whoWillRecevie'
+to = 'dumbdata'
