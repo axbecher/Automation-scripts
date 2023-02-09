@@ -58,7 +58,19 @@ def check_inventoryBothExists():
             else:
                 entries.append(["Not Exists", product_name, url, current_timestamp])
         df = pd.DataFrame(entries, columns=["Availability", "Product Name", "URL", "Timestamp"])
-        return df
+        df.insert(0, "Index", range(1, 1+len(df)))
+        
+    def color_pink(row):
+        color = 'background-color: springgreen' if row['Availability'] == 'Exists' else 'background-color: lightcoral'
+        return [color] * len(row)    
+
+    return (df.style.apply(color_pink, axis=1)
+              .set_properties(**{'text-align': 'center', 'font-size': '15px'})
+              .hide_index())
+
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 def send_email(df):
     import credentials
@@ -72,27 +84,80 @@ def send_email(df):
     msg['From'] = email_user
     msg['To'] = to
     msg['Subject'] = subject
-    body = 'Inventory Report'
-    msg.attach(MIMEText(body, 'plain'))
 
-    # Convert the dataframe to html and attach it as an html file
-    df.to_html("logger.html", index=False)
-    filename = "logger.html"
-    attachment = open(filename, "rb")
-    part = MIMEBase('application', "octet-stream")
-    part.set_payload((attachment).read())
-    encoders.encode_base64(part)
-    part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
-    msg.attach(part)
+    # Convert the dataframe to html
+    
+    html_table = df.to_html(index=False, classes=["dataframe"])
+
+    # Define the body of the email with HTML
+    body = f"""
+    <html>
+    <head>
+        <style>
+        body {{
+            background-color: gainsboro;
+        }}
+        .dataframe thead th {{
+            padding: 10px;
+            padding-right: 15px;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+        }}
+        .dataframe thead th {{
+            font-size: 25px;
+            font-weight: bold;
+            padding-right: 15px;
+        }}
+        .header {{
+            font-size: 50px;
+            text-align: center;
+            background-clip: text;
+            background-color: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: linear-gradient(to right, #f80759, #f5d50e, #64dd17, #0288d1, #7117ea, #ea00c9);
+        }}
+        .table-container {{
+        margin: 20px;
+        border: 1px solid black;
+        padding: 15px;
+        padding-right: 10px;
+        color: black;
+        text-align: center;
+        }}
+        </style>
+    </head>
+    <body style="background-color: gainsboro;">
+            <h1 class="header" style="font-size: 50px; text-align: center; background: linear-gradient(to right, #f80759, #f5d50e, #64dd17, #0288d1, #7117ea, #ea00c9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Products inventory check</h1>
+            <div class="table-container">
+                <style>
+                    .dataframe thead th {{
+                        padding: 10px;
+                        font-size: 25px;
+                        font-weight: bold;
+                        text-align: center;
+                    }}
+                    .dataframe tbody td {{
+                        background-color: {{ 'Exists' == df.at[0, 'Availability']  ? 'springgreen' : 'lightcoral' }};
+                    }}
+                </style>
+                {html_table}
+            </div>
+    </body>
+    </html>
+    """
+
+    msg.attach(MIMEText(body, 'html'))
 
     # Send the email
     server_credential = credentials.server
-    server = smtplib.SMTP(server_credential, 587) #editServer
+    server = smtplib.SMTP(server_credential, 587)
     server.starttls()
     server.login(email_user, email_password)
     text = msg.as_string()
     server.sendmail(email_user, to, text)
     server.quit()
+
 
 if __name__ == '__main__':
     df = check_inventoryBothExists()
