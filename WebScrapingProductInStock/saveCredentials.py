@@ -23,22 +23,24 @@ def switch_mode():
     global mode
     if mode == "dark":
         mode = "light"
-        switch_button.configure(text="Switch to Dark Mode", font=font)
+        switch_button.configure(text="Switch to Dark Mode", font=font, bg="#645CBB", fg="white")
         root.configure(bg="white")
         emailULabel.configure(bg="white", fg="black")
         emailPLabel.configure(bg="white", fg="black")
         serverLabel.configure(bg="white", fg="black")
         recipientLabel.configure(bg="white", fg="black")
-        saveButton.configure(bg="white", fg="black", font=font)
+        saveButton.configure(bg="#645CBB", fg="white", font=font)
+        serverOption.configure(bg="#645CBB", fg="white")
     else:
         mode = "dark"
-        switch_button.configure(text="Switch to Light Mode", font=font)
+        switch_button.configure(text="Switch to Dark Mode", font=font, bg="#BFACE2", fg="white")
         root.configure(bg="black")
         emailULabel.configure(bg="black", fg="white")
         emailPLabel.configure(bg="black", fg="white")
         serverLabel.configure(bg="black", fg="white")
         recipientLabel.configure(bg="black", fg="white")
-        saveButton.configure(bg="black", fg="white")
+        saveButton.configure(bg="#BFACE2", fg="white")
+        serverOption.configure(bg="#BFACE2", fg="white")
 
 mode = "light"
 
@@ -65,6 +67,8 @@ serverLabel = tk.Label(root, text="Server", font=font)
 serverLabel.pack()
 server = tk.StringVar(root)
 
+root.option_add("*font", ("Helvetica", 16))
+
 options = [("Office 365 - smtp.office365.com", "smtp.office365.com"),
            ("Gmail - smtp.gmail.com", "smtp.gmail.com"),
            ("Yahoo - smtp.mail.yahoo.com", "smtp.mail.yahoo.com"),
@@ -73,6 +77,9 @@ options = [("Office 365 - smtp.office365.com", "smtp.office365.com"),
 server.set(options[0][1])
 
 serverOption = tk.OptionMenu(root, server, *[item[0] for item in options])
+serverOption["font"] = ("Helvetica", 16)
+serverOption["bg"] = "#645CBB"
+serverOption["fg"] = "white"
 serverOption.config(width=40)
 serverOption.pack()
 
@@ -81,7 +88,7 @@ recipientLabel.pack()
 recipient = tk.Entry(root,width=40, font=font)
 recipient.pack()
 
-saveButton = tk.Button(root, text="Save", command=save_credentials, font=font)
+saveButton = tk.Button(root, text="Save", command=save_credentials, font=font, bg="#645CBB", fg="white")
 saveButton.pack()
 
 root.mainloop()
