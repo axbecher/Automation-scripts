@@ -34,6 +34,7 @@ A python script for web scraping to check if a product exists on a website and c
 - After running the program, if everything goes according to plan (**see below**);
 - The program will access each link mentioned in the urls.txt file;
 - After accessing each link, you should receive an HTML table via email to the recipient mentioned in the "to" field, containing the columns availability, product name, url, and timestamp;
+- The script will generate a HTML table with 4 columns: Availability, Product Name, URL, and Timestamp;
 
 # For the program to work correctly:
 - Ensure that you have all the requirements.txt installed. ( pip install -r requirements.txt )
@@ -63,10 +64,6 @@ To run the script, use the following command in your terminal:
 ```sh
 python main.py
 ```
-
-# How does it work?
-- The script will generate a HTML table with 4 columns: Availability, Product Name, URL, and Timestamp.
-
 
 # Support
 For any questions or support, please contact me via https://axbecher.com/contact/
